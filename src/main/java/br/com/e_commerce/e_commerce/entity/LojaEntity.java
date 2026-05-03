@@ -3,28 +3,23 @@ package br.com.e_commerce.e_commerce.entity;
 import br.com.e_commerce.e_commerce.enums.LojaSegmentos;
 import br.com.e_commerce.e_commerce.enums.StatusLoja;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Table(name = "TB_LOJA")
 @Getter
 @Setter
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class LojaEntity implements Serializable {
 
     private static final Long SerialVersionUID = 1L;
-    private static final Logger log = LoggerFactory.getLogger(LojaEntity.class);
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -47,7 +42,7 @@ public class LojaEntity implements Serializable {
     private UsuarioEntity usuario;
 
     @OneToMany(mappedBy = "loja", fetch = FetchType.LAZY)
-    private ProdutoEntity produto;
+    private List<ProdutoEntity> produto;
 
     @CreationTimestamp
     private LocalDateTime criadoEm;

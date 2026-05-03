@@ -2,10 +2,9 @@ package br.com.e_commerce.e_commerce.entity;
 
 import br.com.e_commerce.e_commerce.enums.StatusProduto;
 import jakarta.persistence.*;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -13,10 +12,14 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "TB_PRODUTO")
+@Getter
+@Setter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class ProdutoEntity implements Serializable {
 
     private static final Long SerialVersionUID = 1L;
-    private static final Logger log = LoggerFactory.getLogger(ProdutoEntity.class);
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

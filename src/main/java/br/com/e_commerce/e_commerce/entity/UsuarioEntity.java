@@ -2,12 +2,11 @@ package br.com.e_commerce.e_commerce.entity;
 
 
 import br.com.e_commerce.e_commerce.enums.RoleUsuario;
+import br.com.e_commerce.e_commerce.enums.StatusUsuario;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -17,12 +16,12 @@ import java.util.List;
 @Table(name = "TB_USUARIO")
 @Getter
 @Setter
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class UsuarioEntity implements Serializable {
 
     private final static long SerialVersionUID = 1L;
-    private final static Logger log = LoggerFactory.getLogger(UsuarioEntity.class);
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -39,6 +38,9 @@ public class UsuarioEntity implements Serializable {
 
     @Column(nullable = false)
     private String email;
+
+    @Enumerated
+    private StatusUsuario statusUsuario;
 
     @Enumerated
     private RoleUsuario roleUsuario;
