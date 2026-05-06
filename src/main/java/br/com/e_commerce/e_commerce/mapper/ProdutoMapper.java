@@ -18,7 +18,7 @@ public class ProdutoMapper {
                 produto.getDescricao(),
                 produto.getQuantidade(),
                 produto.getValor(),
-                produto.getLoja(),
+                null,
                 produto.getStatusProduto(),
                 produto.getCriadoEm(),
                 produto.getAtualizadoEm()

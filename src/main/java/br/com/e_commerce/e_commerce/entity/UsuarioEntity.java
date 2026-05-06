@@ -10,6 +10,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -46,7 +47,7 @@ public class UsuarioEntity implements Serializable {
     private RoleUsuario roleUsuario;
 
     @OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY)
-    private List<LojaEntity> lojas;
+    private List<LojaEntity> lojas = new ArrayList<>();
 
     @CreationTimestamp
     private LocalDateTime criadoEm;

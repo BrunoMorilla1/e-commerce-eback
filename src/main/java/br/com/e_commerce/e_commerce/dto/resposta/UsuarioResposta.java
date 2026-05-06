@@ -1,6 +1,5 @@
 package br.com.e_commerce.e_commerce.dto.resposta;
 
-import br.com.e_commerce.e_commerce.entity.LojaEntity;
 import br.com.e_commerce.e_commerce.enums.RoleUsuario;
 import br.com.e_commerce.e_commerce.enums.StatusUsuario;
 
@@ -16,7 +15,8 @@ public record UsuarioResposta(
         String email,
         StatusUsuario statusUsuario,
         RoleUsuario roleUsuario,
-        List<LojaEntity> lojas,
+        List<LojaDtoResposta> lojas,
         LocalDateTime criadoEm,
         LocalDateTime atualizadoEm) {
+
 }

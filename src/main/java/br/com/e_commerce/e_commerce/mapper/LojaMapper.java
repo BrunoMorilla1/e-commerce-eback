@@ -17,8 +17,8 @@ public class LojaMapper {
                 loja.getNome(),
                 loja.getCnpj(),
                 loja.getLojaSegmentos(),
-                loja.getUsuario(),
-                loja.getProduto(),
+                null,
+                null,
                 loja.getCriadoEm(),
                 loja.getAtualizadoEm()
         );

@@ -13,7 +13,7 @@ public record ProdutoDtoResposta(
         String descricao,
         int quantidade,
         BigDecimal valor,
-        LojaEntity loja,
+        LojaDtoResposta loja,
         StatusProduto statusProduto,
         LocalDateTime criadoEm,
         LocalDateTime atualizadoEm){

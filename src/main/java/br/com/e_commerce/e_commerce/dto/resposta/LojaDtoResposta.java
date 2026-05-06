@@ -1,7 +1,5 @@
 package br.com.e_commerce.e_commerce.dto.resposta;
 
-import br.com.e_commerce.e_commerce.entity.ProdutoEntity;
-import br.com.e_commerce.e_commerce.entity.UsuarioEntity;
 import br.com.e_commerce.e_commerce.enums.LojaSegmentos;
 
 import java.time.LocalDateTime;
@@ -16,9 +14,9 @@ public record LojaDtoResposta(
 
     LojaSegmentos lojaSegmentos,
 
-    UsuarioEntity usuario,
+    UsuarioResposta usuario,
 
-    List<ProdutoEntity> produto,
+    List<ProdutoDtoResposta> produto,
 
     LocalDateTime criadoEm,
 
