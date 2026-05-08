@@ -2,8 +2,6 @@ package br.com.e_commerce.e_commerce.controller;
 
 import br.com.e_commerce.e_commerce.dto.requisicao.UsuarioRequisicao;
 import br.com.e_commerce.e_commerce.dto.resposta.UsuarioResposta;
-import br.com.e_commerce.e_commerce.entity.UsuarioEntity;
-import br.com.e_commerce.e_commerce.mapper.UsuarioMapper;
 import br.com.e_commerce.e_commerce.service.UsuarioService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -14,7 +12,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 
 @RestController
@@ -55,5 +52,21 @@ public class UsuarioController {
             return ResponseEntity.notFound().build();
 
         return ResponseEntity.ok(usuarioDto);
+    }
+
+    @PutMapping("/atualizar/{id}")
+    public ResponseEntity<UsuarioResposta> atualizarUsuario(@PathVariable(value = "id") Long id,
+                                                            @RequestBody @Valid UsuarioRequisicao requisicao) {
+        var usuario = usuarioService.atualizarUsuario(id, requisicao);
+        if (usuario == null)
+            return ResponseEntity.notFound().build();
+
+        return ResponseEntity.ok().body(usuario);
+    }
+
+    @DeleteMapping("/deletar/{id}")
+    public ResponseEntity<String> deletarUsuario(@PathVariable(value = "id")Long id){
+        var texto = usuarioService.deletarUsuario(id);
+        return ResponseEntity.ok().body(texto);
     }
 }

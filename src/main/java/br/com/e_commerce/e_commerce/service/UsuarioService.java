@@ -49,11 +49,41 @@ public class UsuarioService {
     }
 
     @Transactional(readOnly = true)
-    public UsuarioResposta buscarUsuarioPorId(Long id){
+    public UsuarioResposta buscarUsuarioPorId(Long id) {
         return repository.findById(id)
                 .map(UsuarioMapper::paraRespostaDTO)
                 .orElse(null);
+    }
+
+    @Transactional
+    public UsuarioResposta atualizarUsuario(Long id, UsuarioRequisicao requisicao) {
+        var usuario = repository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Id informado esta invalido ou não existe"));
+
+        if (!requisicao.nome().isEmpty()) {
+            usuario.setNome(requisicao.nome());
         }
+        if (!requisicao.cpf().isEmpty()) {
+            usuario.setCpf(UsuarioUtill.converterCpfSalvar(requisicao.cpf()));
+        }
+        if (!requisicao.dataDeNascimento().isEmpty()) {
+            usuario.setDataDeNascimento(requisicao.dataDeNascimento());
+        }
+        if (!requisicao.email().isEmpty()) {
+            usuario.setEmail(requisicao.email());
+        }
+        var usuarioSalvo = repository.save(usuario);
+        log.debug("Usuario atualizado");
 
+        return UsuarioMapper.paraRespostaDTO(usuarioSalvo);
+    }
 
+    @Transactional
+    public String deletarUsuario(Long id){
+        var usuario = repository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Id informado esta invalido ou não existe"));
+        repository.delete(usuario);
+        log.info("Usuario deletado");
+        return "Usuario deletado com sucesso!";
+    }
 }
