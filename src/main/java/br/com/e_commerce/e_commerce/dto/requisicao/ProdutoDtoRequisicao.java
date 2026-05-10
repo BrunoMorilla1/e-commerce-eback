@@ -10,6 +10,7 @@ public record ProdutoDtoRequisicao(
         String descricao,
         int quantidade,
         BigDecimal valor,
-        StatusProduto statusProduto){
+        StatusProduto statusProduto,
+        LojaDtoRequisicao cnpj){
 
 }

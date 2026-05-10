@@ -7,15 +7,12 @@ import br.com.e_commerce.e_commerce.mapper.UsuarioMapper;
 import br.com.e_commerce.e_commerce.repository.UsuarioRepository;
 import br.com.e_commerce.e_commerce.util.UsuarioUtill;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.java.Log;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Optional;
 
 
 @Service
@@ -25,10 +22,6 @@ public class UsuarioService {
 
     @Autowired
     private final UsuarioRepository repository;
-
-    @Autowired
-    private UsuarioMapper mapper;
-
 
     @Transactional
     public UsuarioResposta criarUsuario(UsuarioRequisicao usuarioRequisicao){
@@ -41,8 +34,8 @@ public class UsuarioService {
     }
 
     @Transactional(readOnly = true)
-    public List<UsuarioResposta> listaDeUsuariosDTO() {
-        List<UsuarioEntity> usuarios = repository.findAll();
+    public List<UsuarioResposta> listaDeUsuarios() {
+        var usuarios = repository.findAll();
         return usuarios.stream()
                 .map(UsuarioMapper::paraRespostaDTO)
                 .toList();

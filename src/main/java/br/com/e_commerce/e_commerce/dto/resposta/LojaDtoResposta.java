@@ -7,18 +7,11 @@ import java.util.List;
 
 public record LojaDtoResposta(
     Long id,
-
     String nome,
-
     String cnpj,
-
     LojaSegmentos lojaSegmentos,
-
     UsuarioResposta usuario,
-
     List<ProdutoDtoResposta> produto,
-
     LocalDateTime criadoEm,
-
     LocalDateTime atualizadoEm) {
 }

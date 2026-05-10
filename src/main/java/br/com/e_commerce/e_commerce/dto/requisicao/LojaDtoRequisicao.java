@@ -1,6 +1,7 @@
 package br.com.e_commerce.e_commerce.dto.requisicao;
 import br.com.e_commerce.e_commerce.enums.LojaSegmentos;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import org.hibernate.validator.constraints.br.CNPJ;
 
@@ -15,7 +16,7 @@ public record LojaDtoRequisicao(
         @NotBlank
         String cnpj,
 
-        @NotBlank
+        @NotNull
         LojaSegmentos lojaSegmentos
 ) {
 

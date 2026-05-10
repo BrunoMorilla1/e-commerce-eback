@@ -3,7 +3,6 @@ package br.com.e_commerce.e_commerce.mapper;
 import br.com.e_commerce.e_commerce.dto.requisicao.UsuarioRequisicao;
 import br.com.e_commerce.e_commerce.dto.resposta.LojaDtoResposta;
 import br.com.e_commerce.e_commerce.dto.resposta.UsuarioResposta;
-import br.com.e_commerce.e_commerce.entity.LojaEntity;
 import br.com.e_commerce.e_commerce.entity.UsuarioEntity;
 import br.com.e_commerce.e_commerce.enums.RoleUsuario;
 import br.com.e_commerce.e_commerce.enums.StatusUsuario;
@@ -11,7 +10,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
-import java.util.Optional;
 
 
 @Component

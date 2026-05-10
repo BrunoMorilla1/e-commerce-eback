@@ -8,6 +8,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -31,10 +32,10 @@ public class LojaEntity implements Serializable {
     @Column(nullable = false)
     private String cnpj;
 
-    @Enumerated
+    @Enumerated(EnumType.STRING)
     private StatusLoja statusLoja;
 
-    @Enumerated
+    @Enumerated(EnumType.STRING)
     private LojaSegmentos lojaSegmentos;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
@@ -42,7 +43,7 @@ public class LojaEntity implements Serializable {
     private UsuarioEntity usuario;
 
     @OneToMany(mappedBy = "loja", fetch = FetchType.LAZY)
-    private List<ProdutoEntity> produto;
+    private List<ProdutoEntity> produto = new ArrayList<>();
 
     @CreationTimestamp
     private LocalDateTime criadoEm;

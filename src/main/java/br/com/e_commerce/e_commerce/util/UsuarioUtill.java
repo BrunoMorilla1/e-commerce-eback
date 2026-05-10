@@ -1,12 +1,9 @@
 package br.com.e_commerce.e_commerce.util;
 
 import br.com.e_commerce.e_commerce.dto.resposta.UsuarioResposta;
-import br.com.e_commerce.e_commerce.entity.UsuarioEntity;
 import br.com.e_commerce.e_commerce.exceptions.ConverterCpfErroException;
-import br.com.e_commerce.e_commerce.repository.UsuarioRepository;
 import lombok.experimental.UtilityClass;
 
-import java.util.List;
 
 @UtilityClass
 public class UsuarioUtill {

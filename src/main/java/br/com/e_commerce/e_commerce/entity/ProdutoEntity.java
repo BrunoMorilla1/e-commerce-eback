@@ -41,7 +41,7 @@ public class ProdutoEntity implements Serializable {
     @JoinColumn(name = "produto")
     private LojaEntity loja;
 
-    @Enumerated
+    @Enumerated(EnumType.STRING)
     private StatusProduto statusProduto;
 
     @CreationTimestamp

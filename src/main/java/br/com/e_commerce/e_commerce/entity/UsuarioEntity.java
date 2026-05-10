@@ -40,10 +40,10 @@ public class UsuarioEntity implements Serializable {
     @Column(nullable = false)
     private String email;
 
-    @Enumerated
+    @Enumerated(EnumType.STRING)
     private StatusUsuario statusUsuario;
 
-    @Enumerated
+    @Enumerated(EnumType.STRING)
     private RoleUsuario roleUsuario;
 
     @OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY)

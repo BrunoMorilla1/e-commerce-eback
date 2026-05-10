@@ -1,6 +1,5 @@
 package br.com.e_commerce.e_commerce.dto.resposta;
 
-import br.com.e_commerce.e_commerce.entity.LojaEntity;
 import br.com.e_commerce.e_commerce.enums.StatusProduto;
 
 import java.math.BigDecimal;

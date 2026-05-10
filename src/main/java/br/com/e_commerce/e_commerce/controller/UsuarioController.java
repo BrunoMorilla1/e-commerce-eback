@@ -34,7 +34,7 @@ public class UsuarioController {
     @GetMapping("/consultar")
     public ResponseEntity<List<UsuarioResposta>> listaDeUsuarios() {
         try {
-            var lista = usuarioService.listaDeUsuariosDTO();
+            var lista = usuarioService.listaDeUsuarios();
             return ResponseEntity.ok(lista);
         } catch (Exception e) {
             log.error("Erro ao consultar usuários", e);

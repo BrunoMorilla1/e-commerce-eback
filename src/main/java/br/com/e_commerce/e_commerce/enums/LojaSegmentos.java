@@ -9,6 +9,8 @@ public enum LojaSegmentos {
     Calcados,
     Esportes,
     PetShop,
-    Livrarias
+    Livrarias,
+    Tecnologia;
+
 
 }
