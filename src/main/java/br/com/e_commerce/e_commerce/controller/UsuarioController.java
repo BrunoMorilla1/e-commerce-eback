@@ -2,6 +2,9 @@ package br.com.e_commerce.e_commerce.controller;
 
 import br.com.e_commerce.e_commerce.dto.requisicao.UsuarioRequisicao;
 import br.com.e_commerce.e_commerce.dto.resposta.UsuarioResposta;
+import br.com.e_commerce.e_commerce.exceptions.GlobalExceptionHandler;
+import br.com.e_commerce.e_commerce.exceptions.TratarErroGenerico;
+import br.com.e_commerce.e_commerce.exceptions.UsuarioNaoEncontradoException;
 import br.com.e_commerce.e_commerce.service.UsuarioService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -26,8 +29,12 @@ public class UsuarioController {
 
     @PostMapping("/salvar")
     public ResponseEntity<UsuarioResposta> criarUsuario(@RequestBody @Valid UsuarioRequisicao usuarioRequisicao) {
-        var usuario = usuarioService.criarUsuario(usuarioRequisicao);
-        return ResponseEntity.status(HttpStatus.CREATED).body(usuario);
+        try {
+            var usuario = usuarioService.criarUsuario(usuarioRequisicao);
+            return ResponseEntity.status(HttpStatus.CREATED).body(usuario);
+        }catch (TratarErroGenerico ex){
+            throw new TratarErroGenerico(ex.getMessage());
+        }
 
     }
 
@@ -44,12 +51,10 @@ public class UsuarioController {
 
     @GetMapping("/consultar/{id}")
     public ResponseEntity<UsuarioResposta> buscarPorId(@PathVariable Long id) {
-        if (id == null)
-            return ResponseEntity.badRequest().build();
-
         UsuarioResposta usuarioDto = usuarioService.buscarUsuarioPorId(id);
-        if (usuarioDto == null)
-            return ResponseEntity.notFound().build();
+        if (usuarioDto == null) {
+            throw new UsuarioNaoEncontradoException(id);
+        }
 
         return ResponseEntity.ok(usuarioDto);
     }

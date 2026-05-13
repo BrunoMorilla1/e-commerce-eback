@@ -1,21 +1,20 @@
 package br.com.e_commerce.e_commerce.util;
 
 import br.com.e_commerce.e_commerce.dto.resposta.UsuarioResposta;
-import br.com.e_commerce.e_commerce.exceptions.ConverterCpfErroException;
 import lombok.experimental.UtilityClass;
 
 
 @UtilityClass
 public class UsuarioUtill {
 
-    public String converterCpfSalvar(String cpf){
+    public String converterCpfSalvar(String cpf) {
         var cpfConvertido = cpf.replaceAll("[^0-9]", "");
 
-        if(!cpf.matches("\\d+")){
+        if (!cpf.matches("\\d+")) {
             return cpfConvertido;
         }
-        throw new ConverterCpfErroException("O campo CPF precisa conter somente numeros");
-        }
+        return null;
+    }
 
     public String cpfResposta(UsuarioResposta usuarioResposta){
         var cpf = usuarioResposta.cpf();
